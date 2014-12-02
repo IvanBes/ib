@@ -1,0 +1,11 @@
+services:
+    sonata.admin.post:
+        class: IB\ArticleBundle\Admin\ArticleAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Actualités", label: "Article" }
+        arguments:
+            - ~
+            - IB\ArticleBundle\Entity\Article
+            - ~
+        calls:
+            - [ setTranslationDomain, [IBArticleBundle]]

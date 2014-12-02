@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="PageBundle.admin.menu" class="IB\PageBundle\Admin\MenuAdmin">
+          <tag name="sonata.admin" manager_type="orm" group="Pages" label="Menu"/>
+          <argument />
+          <argument>IB\PageBundle\Entity\Menu</argument>
+          <argument>SonataAdminBundle:CRUD</argument>
+        </service>        
+
+        <service id="PageBundle.admin.contenu" class="IB\PageBundle\Admin\ContenuAdmin">
+          <tag name="sonata.admin" show_in_dashboard="false" manager_type="orm" group="Pages" label="Contenu"/>
+          <argument />
+          <argument>IB\PageBundle\Entity\Contenu</argument>
+          <argument>SonataAdminBundle:CRUD</argument>
+        </service>
+
+        <service id="PageBundle.admin.module" class="IB\PageBundle\Admin\ModuleAdmin">
+          <tag name="sonata.admin" manager_type="orm" group="Pages" label="Module"/>
+          <argument />
+          <argument>IB\PageBundle\Entity\Module</argument>
+          <argument>SonataAdminBundle:CRUD</argument>
+        </service>
+
+        <service id="PageBundle.admin.menuhasgalerie" class="IB\PageBundle\Admin\MenuHasGalerieAdmin">
+          <tag name="sonata.admin" show_in_dashboard="false" manager_type="orm" group="Pages" label="MenuHasGalerie"/>
+          <argument />
+          <argument>IB\PageBundle\Entity\MenuHasGalerie</argument>
+          <argument>SonataAdminBundle:CRUD</argument>
+        </service>
+
+    </services>
+</container>

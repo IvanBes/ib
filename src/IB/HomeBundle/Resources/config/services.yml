@@ -1,0 +1,7 @@
+parameters:
+#    ib_home.example.class: IB\HomeBundle\Example
+
+services:
+#    ib_home.example:
+#        class: %ib_home.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

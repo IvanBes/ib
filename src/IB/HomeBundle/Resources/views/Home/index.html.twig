@@ -1,0 +1,15 @@
+{% extends "IBHomeBundle::layout.html.twig" %}
+
+{% block IBHome_Body %}
+ 	{{ render(url('IBArticle_list')) }}
+ 	{{ render(url('ib_media_get_liste_films')) }}
+{% endblock %}
+
+{% block js_bottom %}
+	{{ parent() }}
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$('#videotheque .contenant').popover();
+	});
+	</script>
+{% endblock %}

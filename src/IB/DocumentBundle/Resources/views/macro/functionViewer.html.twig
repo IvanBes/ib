@@ -1,0 +1,106 @@
+{% macro renderView_documentHasGaleries(documentHasGaleries) %}
+	{% import _self as function %}
+	{% set uls_, divs_ = null, null %}
+
+	{% for documentHasGalerie in documentHasGaleries %}
+
+		{% set uls_ %}
+			{{ uls_ }}	
+			{% if loop.first %}<ul class="nav nav-tabs" role="tablist">{% endif %}
+				<li class="{% if loop.first %}active{% endif %}" >
+					<a href="#{{ documentHasGalerie.galerie.id}}" role="tab" data-toggle="tab">
+					<h1>{{ documentHasGalerie.galerie.name|capitalize }}</h1>
+					</a>
+				</li>
+			{% if loop.last %}</ul>{% endif %}
+		{% endset %}
+	
+		{% set divs_ %}
+			{{ divs_ }}
+			{% if loop.first %}<div class="tab-content">{% endif %}
+			<div class="tab-pane {% if loop.first %}active{% endif %}" id="{{documentHasGalerie.galerie.id}}">
+				{{ function.renderView_galerie(documentHasGalerie.galerie) }}
+			</div>
+			{% if loop.last %}</div>{% endif %}
+		{% endset %}
+
+	{% else %}
+		Aucun document.
+	{% endfor %}
+
+	<!-- Nav tabs -->
+	{{uls_}}
+
+	<!-- Tab panes -->
+	{{divs_}}
+
+{% endmacro %}
+
+{% macro renderView_documentPage(pagination, section) %}
+	{% set division = myCeil(pagination.getTotalItemCount/pagination.getItemNumberPerPage) %}	
+	{% if division > 1 %}
+		<span data-section="{{ section }}">
+			{{ knp_pagination_render(pagination) }}
+		</span>
+	{% endif %}
+
+	<table class="table table-striped">
+		<thead>
+		    <tr>
+		      <th>#</th>
+		      <th>Nom du fichier</th>
+		      <th>Type</th>
+		      <th>Date de mise en ligne</th>
+		      <th>Lien</th>
+		    </tr>
+		</thead>
+	
+	<tbody>
+		{% for galerieHasMedia in pagination %}
+			<tr>
+				<td>{{loop.index}}</td>
+				<td>{{galerieHasMedia.media.name}}</td>
+				<td>{{galerieHasMedia.media.contentType}}</td>
+				<td>
+					{% if galerieHasMedia.media.updatedAt > galerieHasMedia.media.createdAt %}
+						Mise à jour le {{ galerieHasMedia.media.updatedAt|localizeddate('long', 'none') }}
+					{% else %}
+						Publié le {{ galerieHasMedia.media.createdAt|localizeddate('long', 'none') }}
+					{% endif %}
+				</td>
+				<td>
+				    <a class="pull-left sonata-media-gallery-media-item-link" target="_blank" href="{% path galerieHasMedia.media, 'reference' %}">
+		    			<span class="glyphicon glyphicon-file"></span>
+					</a>
+				</td>
+			</tr>
+		{% else %}
+			<tr>
+				<td>Aucun media.</td>
+			</tr>		    
+		{% endfor %}
+
+		</tbody>
+	</table>
+{% endmacro %}
+
+{% macro renderView_galerie(galerie) %}
+	{% import _self as function %}
+	{% set section = "#{galerie.id}_" %}
+
+	<span id="{{ section }}">
+		{% for pagination in galerie.galleryHasMedias %}
+			{{ function.renderView_documentPage(pagination, section) }}
+		{% endfor %}
+	</span>
+	
+	<hr>
+	
+	<span class="text-primary">
+		{% if galerie.updatedAt > galerie.createdAt %}
+			Mise à jour le {{ galerie.updatedAt|localizeddate('long', 'none') }}.
+		{% else %}
+			Publié le {{ galerie.createdAt|localizeddate('long', 'none') }}.
+		{% endif %}
+	</span>
+{% endmacro %}

@@ -1,0 +1,28 @@
+<!-- HEADER -->
+<header id="header">
+    <div id="logo-group">
+        <!-- début logo du lycée -->
+        <span id="logo"> <img src="{{ asset('img/logo.png') }}" alt="Lycée fénelon"></span>
+        <!-- fin du logo -->
+    </div>
+    <!-- pulled right -->
+    <div class="pull-right">
+
+        <!-- collapse menu -->
+        <div id="hide-menu" class="btn-header pull-right">
+            <span> <a href="javascript:void(0);" title="Collapse Menu"><i class="fa fa-reorder"></i></a> </span>
+        </div>
+
+        <!-- fullscreen button -->
+        <div id="fullscreen" class="btn-header transparent pull-right">
+            <span> <a href="javascript:void(0);" data-action="launchFullscreen" title="Full Screen"><i class="fa fa-arrows-alt"></i></a> </span>
+        </div>
+        <!-- fin collapse -->
+    </div>
+    <!-- fin pulled right -->
+</header>
+<!-- FIN HEADER -->
+
+<!-- navigation -->
+    {{ render(url("ib_page_get_menu_laterale")) }}
+<!-- fin navigation -->

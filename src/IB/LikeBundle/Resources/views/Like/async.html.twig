@@ -1,0 +1,12 @@
+{% javascripts '@IBLikeBundle/Resources/assets/js/like.js' %}
+<script type="text/javascript">
+$(document).ready(function() {
+    var ib_like_script = document.createElement('script');
+    ib_like_script.async = true;
+    ib_like_script.src = '{{ asset_url }}';
+    ib_like_script.type = 'text/javascript';
+
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ib_like_script);
+});
+</script>
+{% endjavascripts %}

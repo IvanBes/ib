@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="ib_sondage.floorTwigExtension.class">IB\SondageBundle\DependencyInjection\extension\floorTwig</parameter>
+    </parameters>
+
+    <!-- Twig EXTENSIONS -->
+
+    <services>
+        <service id="ib_sondage.floorTwigExtension" class="%ib_sondage.floorTwigExtension.class%">
+            <tag name="twig.extension" />
+        </service>
+
+    <!-- Services ADMIN -->
+
+    <service id="SondageBundle.admin.sondage" class="IB\SondageBundle\Admin\SondageAdmin">
+      <tag name="sonata.admin" manager_type="orm" group="Sondages" label="Sondage"/>
+      <argument />
+      <argument>IB\SondageBundle\Entity\Sondage</argument>
+      <argument>SonataAdminBundle:CRUD</argument>
+    </service>
+
+    <service id="SondageBundle.admin.reponse" class="IB\SondageBundle\Admin\ReponseAdmin">
+      <tag name="sonata.admin" show_in_dashboard="false" manager_type="orm" group="Sondages" label="Reponse"/>
+      <argument />
+      <argument>IB\SondageBundle\Entity\Reponse</argument>
+      <argument>SonataAdminBundle:CRUD</argument>
+    </service>
+
+    </services>
+</container>

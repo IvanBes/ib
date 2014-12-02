@@ -1,0 +1,12 @@
+{% import "IBCommentaireBundle:macro:functionViewer.html.twig" as functionViewer %}
+{% spaceless %}
+<div class="box box-info">
+    <div class="box-header">
+        <i class="fa fa-bullhorn"></i>
+        <h3 class="box-title">Les derniers commentaires</h3>
+    </div><!-- /.box-header -->
+    <div class="box-body">
+		<ul class="media-list">{{ functionViewer.view_commentaires(commentaires|default(null), false) }}</ul>
+    </div><!-- /.box-body -->
+</div>
+{% endspaceless %}

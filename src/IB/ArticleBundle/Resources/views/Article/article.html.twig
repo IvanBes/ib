@@ -1,0 +1,14 @@
+{% import "IBArticleBundle:macro:functionViewer.html.twig" as functionViewer %}
+
+{% block title %}
+{{ parent() }} - Lecture d'un article : "{{ article.titre }}"
+{% endblock %}
+
+{% set title %}Article : {{ article.titre }}{% endset %}
+
+{% block IBIndex_Body %}
+
+ 	{{ functionViewer.renderView_article(article, true, 0) }}
+
+{% include 'IBCommentaireBundle:Discussion:async.html.twig' with {'slug':article.slug, 'className': classname} only %}
+{% endblock %}

@@ -1,0 +1,16 @@
+{% if menu_footer is not empty %}
+<div class="ib_navigation ib_page nav-selected-partiel" data-split="{{ menu_footer[0].lvl + 2 }}">
+	<a href="#">Haut de la page</a>
+	{% for menu in menu_footer %}
+
+		{% if menu.contenus is empty and menu.modules is not empty %}
+		    {% set module =	menu.modules|first %}
+			<a class="ajaxLink" href="{{path('ib_page_get_repertoire', {'url':menu.url, 'module':module.name})}}">{{ menu.name }}</a>
+		{% else %}
+			{% set url_footer = menu.redirection is not null ? menu.redirection.url : menu.url %}
+	    	<a class="ajaxLink" href="{{path('ib_page_get_repertoire', {'url':url_footer})}}">{{ menu.name }}</a>
+	    {% endif %}
+
+	{% endfor %}
+</div>
+{% endif %}

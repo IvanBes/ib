@@ -1,0 +1,15 @@
+{% import "IBSondageBundle:macro:functionSondage.html.twig" as functionSondage %}
+		
+<div id="statisticsChoices">
+	{% for reponse in reponses %}
+		{{ reponse.reponse }} <br />
+		<div class="progress progress-striped" id="sondage_choice_{{ reponse.id }}">
+		  <div class="progress-bar progress-bar-info ibSondagesondageBar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:{{ functionSondage.calcul(reponse.vote, totalvote) }};">
+		    <span class="sr-only"></span>
+		  </div>
+		</div>
+	{% endfor %}
+
+	<hr>
+	Nombre de votants : {{ totalvote }}{% if close %}, sondage clôturé{% endif %}
+</div>

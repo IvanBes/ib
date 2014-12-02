@@ -1,0 +1,120 @@
+{% macro renderView_menuHasGaleries(menuHasGaleries) %}
+	{% import _self as function %}
+	{% set uls_, divs_ = null, null %}
+
+	{% for menuHasGalerie in menuHasGaleries %}
+
+		{% set uls_ %}
+			{{ uls_ }}	
+			{% if loop.first %}<ul class="nav nav-tabs" role="tablist">{% endif %}
+				<li class="{% if loop.first %}active{% endif %}" >
+					<a href="#{{ menuHasGalerie.galerie.id}}" role="tab" data-toggle="tab">
+					<h1>{{ menuHasGalerie.galerie.name|capitalize }}</h1>
+					</a>
+				</li>
+			{% if loop.last %}</ul>{% endif %}
+		{% endset %}
+	
+		{% set divs_ %}
+			{{ divs_ }}
+			{% if loop.first %}<div class="tab-content">{% endif %}
+			<div class="tab-pane {% if loop.first %}active{% endif %}" id="{{menuHasGalerie.galerie.id}}">
+				{{ function.renderView_galerie(menuHasGalerie.galerie) }}
+			</div>
+			{% if loop.last %}</div>{% endif %}
+		{% endset %}
+
+	{% else %}
+		Aucun document.
+	{% endfor %}
+
+	<!-- Nav tabs -->
+	{{uls_}}
+
+	<!-- Tab panes -->
+	{{divs_}}
+
+{% endmacro %}
+
+{% macro renderView_galerie(galerie) %}
+	{% import _self as function %}
+
+	<div class="row">
+		<!-- SuperBox -->
+		<div class="superbox col-sm-12">
+			{% for galleryHasMedia in galerie.galleryHasMedias %}
+				<div class="superbox-list">
+					<a href="{% path galleryHasMedia.media, 'big' %}">
+				    	{% thumbnail galleryHasMedia.media, galerie.defaultFormat with {'class': 'superbox-img'} %}
+				    </a>
+				</div>
+			{% endfor %}
+
+			<div class="superbox-float"></div>
+		</div>
+		<!-- /SuperBox -->
+	</div>
+
+	<hr>
+	
+	<span class="text-primary">
+		{% if galerie.updatedAt > galerie.createdAt %}
+			Mise à jour le {{ galerie.updatedAt|localizeddate('long', 'none') }}.
+		{% else %}
+			Publié le {{ galerie.createdAt|localizeddate('long', 'none') }}.
+		{% endif %}
+	</span>
+{% endmacro %}
+
+{% macro renderView_contenus(contenus) %}
+	{% import _self as function %}
+	{% set uls_, divs_ = null, null %}
+
+	{% for contenu in contenus %}
+
+		{% set uls_ %}
+			{{ uls_ }}	
+			{% if loop.first %}<ul class="nav nav-tabs" role="tablist">{% endif %}
+				<li class="{% if loop.first %}active{% endif %}" >
+					<a href="#{{contenu.id}}" role="tab" data-toggle="tab">
+					<h1>{{ contenu.titre|capitalize }}</h1>
+					</a>
+				</li>
+			{% if loop.last %}</ul>{% endif %}
+		{% endset %}
+	
+		{% set divs_ %}
+			{{ divs_ }}
+			{% if loop.first %}<div class="tab-content">{% endif %}
+			<div class="tab-pane {% if loop.first %}active{% endif %}" id="{{contenu.id}}">
+				{{ function.renderView_contenu(contenu) }}
+			</div>
+			{% if loop.last %}</div>{% endif %}
+		{% endset %}
+
+	{% else %}
+		Aucun contenu.
+	{% endfor %}
+
+	<!-- Nav tabs -->
+	{{uls_}}
+
+	<!-- Tab panes -->
+	{{divs_}}
+
+{% endmacro %}
+
+{% macro renderView_contenu(contenu) %}
+
+    {{ contenu.contenu|format_text(contenu.contenuFormatter)|raw }}
+
+    <hr>
+
+    <span class="text-primary">
+		{% if contenu.modificationDate > contenu.date %}
+			Mise à  jour le {{ contenu.modificationDate|localizeddate('long', 'none') }}.
+		{% else %}
+			Publié le {{ contenu.date|localizeddate('long', 'none') }}.
+		{% endif %}
+	</span>		
+{% endmacro %}

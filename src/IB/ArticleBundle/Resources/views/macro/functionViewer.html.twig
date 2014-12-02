@@ -1,0 +1,45 @@
+{% macro renderView_article(article, cut) %}
+
+<div class="box box-info">
+    <div class="box-header">
+        <h3 class="box-title"><a href="{{ path('IBArticle_article', {'slug':article.slug}) }}">{{ article.titre|capitalize }}</a></h3>
+        <div class="box-tools pull-right">
+            <div class="label bg-aqua">{{ article.account.username }}</div>
+        </div>
+    </div>
+    <div class="box-body">
+		    {{ cut|default(200) == 0 ? article.contenu|raw : article.contenu|cropFilter(cut|default(200))|raw }}
+    </div><!-- /.box-body -->
+</div>
+					
+{% endmacro %}
+
+
+{% macro renderView_articles(articles, cut) %}
+	{% for article in articles %}
+		<span class="timeline-seperator text-center"> 
+			<span>
+				{% if article.modificationDate > article.date %}
+					Modifié le {{ article.modificationDate|localizeddate('long', 'none') }}
+				{% else %}
+					Publié le {{ article.date|localizeddate('long', 'none') }}
+				{% endif %}
+			</span>
+		</span>
+		
+		<div class="chat-body no-padding profile-message">
+			<ul>
+				<li class="message">
+					<img width="45px" height="50px" src="{{ article.account.avatar.getWebPath }}" class="online">
+					<span class="message-text"> <a href="javascript:void(0);" class="username">{{ article.titre|title }}</a>
+						{{ article.contenu|format_text(article.contenuFormatter)|raw }}
+					</span>
+					
+				</li>
+			</ul>
+		</div>
+	{% else %}
+		<li class="article section"><div class="media-body">Il n'y a pas d'article.</div></li>
+	{% endfor %}	
+{% endmacro %}
+

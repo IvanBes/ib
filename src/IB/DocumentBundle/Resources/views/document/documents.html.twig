@@ -1,0 +1,15 @@
+{% import "IBDocumentBundle:macro:functionViewer.html.twig" as functionViewer %}
+
+{% spaceless %}
+<h1>Document : {{ menu.name }}</h1>
+<hr>
+<div class="row">
+	<div class="col-md-12">
+		{% if documentHasGaleries is not empty %}
+			{{ functionViewer.renderView_documentHasGaleries(documentHasGaleries) }}
+		{% else %}
+		    Il n'y a aucun document pour le moment.
+		{% endif %}
+	</div>
+</div>
+{% endspaceless %}

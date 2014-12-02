@@ -1,0 +1,7 @@
+{% import "IBCommentaireBundle:macro:functionViewer.html.twig" as functionViewer %}
+{% spaceless %}
+	{{ functionViewer.view_commentaires(commentaires|default(null), true) }}
+	{% if commentaires is not empty and not specific_focus|default(false) and commentaires.getTotalItemCount/commentaires.getItemNumberPerPage > 1 %}
+		<div class="navigation">{{ knp_pagination_render(commentaires) }}</div>
+	{% endif %}
+{% endspaceless %}

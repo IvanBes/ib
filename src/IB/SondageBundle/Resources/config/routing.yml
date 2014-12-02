@@ -1,0 +1,4 @@
+sondage:
+   type:     rest
+   resource: IB\SondageBundle\Controller\SondageController
+   name_prefix: api_ib_sondage_

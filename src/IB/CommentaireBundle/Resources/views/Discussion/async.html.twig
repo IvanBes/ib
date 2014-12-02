@@ -1,0 +1,15 @@
+{% if div is not defined %}<div id="ib_commentaire_discussion"></div>{% endif %}
+{% javascripts '@IBCommentaireBundle/Resources/assets/js/commentaire.js' %}
+<script type="text/javascript">
+	{% if className is not null %}
+	var ib_commentaire_discussion_api_body = true, ib_commentaire_api_entity = '{{ className|lower }}', ib_commentaire_api_slug = '{{ slug }}';
+	{% endif %}
+window.onload = function() {
+    var ib_commentaire_script = document.createElement('script');
+    ib_commentaire_script.async = true;
+    ib_commentaire_script.src = '{{ asset_url }}';
+    ib_commentaire_script.type = 'text/javascript';
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ib_commentaire_script);
+};
+</script>
+{% endjavascripts %}

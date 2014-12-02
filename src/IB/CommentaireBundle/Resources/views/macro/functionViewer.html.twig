@@ -1,0 +1,78 @@
+{% macro view_commentaire(commentaire, acl) %}
+	<li class="media {% if not acl %}media-small{% endif %} commentaire {% if app.security.token.user == commentaire.account %}user{% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") %}between_time{% endif %}" id="ib_commentaire_{{ commentaire.id }}">
+	  <div class="pull-left">
+	    <img class="media-object" src="{{ commentaire.account.avatar.webPath }}" />
+	  </div>
+
+	    {% if acl %}
+	    	<div class="pull-right" data-id="{{commentaire.id}}">
+	    		{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+	    			<button class="btn btn-default btn-sm ib_commentaire_button_reply" style="margin-right:5px;"><i class="glyphicon glyphicon-plus"></i></button>
+	    				{% if app.security.token.user == commentaire.account %}
+							<button class="btn btn-default btn-sm ib_commentaire_button_edit"><i class="glyphicon glyphicon-edit"></i></button>
+	    					{% include 'IBCommentaireBundle:Discussion:formulaire_remove_commentaire.html.twig' only %}
+	    				{% endif %}
+	    		{% endif %}
+	    	</div>
+	    {% endif %}
+
+	  <div class="media-body">   
+	    <h5 class="media-heading">Par {{ commentaire.account.username }}, le {{ commentaire.date|date('d/m/Y') }}{% if not acl %}.<br>Dans <strong class="text-info">{% if commentaire.discussion.classname|classname == 'Film' %}<a href="{{ path('ib_media_get_film', {"slug":commentaire.discussion.slug}) }}">{% endif %}{{commentaire.discussion.classname|classname}} - {{commentaire.discussion.titre}}{% if commentaire.discussion.classname|classname == 'Film' %}</a>{% endif %}</strong>{% else %}<span class="update_commentaire text-muted">{% if commentaire.contentChanged is not null %} - Modifié <i class="glyphicon glyphicon-pencil"></i>{% endif %}</span>{% endif %}</h5>   	
+	    
+	    <span class="text">{{ commentaire.commentaire|capitalize|smiley|raw|nl2br }}</span>
+
+	    {% if acl %}
+	    	{% import _self as view %}
+
+	    	<span id="ib_childs_{{commentaire.id}}">
+	    		{{ view.view_commentaire_childrens(commentaire) }}
+	   		</span>
+	   	{% endif %}
+
+	  </div>
+	</li>
+{% endmacro %}
+
+{% macro view_commentaires(commentaires, acl) %}
+	{% import _self as view %}
+	
+	{% for commentaire in commentaires %}
+		{{ view.view_commentaire(commentaire, acl) }}
+	{% else %}
+		<li id="avert" {% if acl %} class="alert alert-warning" {% endif %}>
+ 			Il n'y a pas de commentaire.
+		</li>
+	{% endfor %}
+{% endmacro %}
+
+{% macro view_commentaire_children(children, show) %}
+	<div class="media commentaire_child {% if app.security.token.user == children.account %}user{% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") %}between_time{% endif %} {% if show %}hide{% endif %}" id="ib_commentaire_{{ children.id }}">
+	  	<div class="pull-left">
+	  		<img class="media-object" src="{{ children.account.avatar.webPath }}" />
+	  	</div>
+
+	  	<div class="pull-right" data-id="{{children.id}}">
+	    	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+	    			{% if app.security.token.user == children.account %}
+						<button class="btn btn-default btn-sm ib_commentaire_button_edit"><i class="glyphicon glyphicon-edit"></i></button>
+	    				{% include 'IBCommentaireBundle:Discussion:formulaire_remove_commentaire.html.twig' only %}
+	    			{% endif %}
+	    	{% endif %}
+	    </div>
+
+	  	<div class="media-body">
+	    	<h5 class="media-heading">Par {{ children.account.username }}, le {{ children.date|date('d/m/Y') }}<span class="update_commentaire text-muted">{% if children.contentChanged is not null %} - Modifié <i class="glyphicon glyphicon-pencil"></i>{% endif %}</span></h5>   	
+	    	<span class="text">{{ children.commentaire|capitalize|nl2br|smiley|raw }}</span>
+        </div>
+	</div>
+{% endmacro %}
+
+{% macro view_commentaire_childrens(commentaire) %}
+	{% import _self as view %}
+	{% for children in commentaire.children %}	
+		{% if loop.first and loop.length > 4 %}
+				<div class="expand_child">Afficher {% if loop.length == 5 %}la réponse précedente{% else %}les {{loop.length - 4}} réponses{% endif %}  <i class="glyphicon glyphicon-chevron-down"></i></div>
+		{% endif %}
+		{{ view.view_commentaire_children(children, loop.index in range(0, loop.length - 4) ? true : false) }}
+	{% endfor %}
+{% endmacro %}

@@ -1,0 +1,15 @@
+{% extends "::baseBlock.html.twig" %}
+
+{% block stylesheets %}
+{{ parent() }}
+<link rel="stylesheet" href="{{ asset('css/layoutLite.css') }}" type="text/css" />
+{% endblock %}
+
+{% block Body_content %}
+	{% spaceless %}
+      	<div class="row ib-bulle" id="main">
+          	{% block actionController %}
+	  	    {% endblock %}
+    	</div>
+    {% endspaceless %}
+{% endblock %}

@@ -1,0 +1,30 @@
+{% spaceless %}
+<div class="box box-info">
+    <div class="box-header">
+        <h3 class="box-title">Sondage : {{ sondage.question }}</h3>
+    </div><!-- /.box-header -->
+    <div class="box-body" id="sondage">
+		<span>
+			{% if form is defined %}
+				{% include ":Form:widget_formulaire.html.twig" with {'theme': 'IBSondageBundle:Form:sondageVote.html.twig', 'form': form, 'idForm': 'ibSondagesondagebundleform', 'actionForm': path('api_ib_sondage_get_sondage_form'), 'valueSubmit': 'Voter', 'InputHr' : true} only %}
+			{% else %}
+				{% import "IBSondageBundle:macro:functionSondage.html.twig" as functionSondage %}
+						
+				<div id="statisticsChoices">
+					{% for reponse in reponses %}
+						{{ reponse.reponse }} <br />
+						<div class="progress progress-striped" id="sondage_choice_{{ reponse.id }}">
+						  <div class="progress-bar progress-bar-info ibSondagesondageBar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:{{ functionSondage.calcul(reponse.vote, totalvote) }};">
+						    <span class="sr-only"></span>
+						  </div>
+						</div>
+					{% endfor %}
+				
+					<hr>
+					Nombre de votants : {{ totalvote }}{% if close %}, sondage clôturé{% endif %}
+				</div>
+			{% endif %}
+		</span>
+    </div><!-- /.box-body -->
+</div>
+{% endspaceless %}

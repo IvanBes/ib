@@ -1,0 +1,7 @@
+<ul>
+{% for error in errors|default(null) %}
+    <li>{{ error }}</li>
+{% endfor%}
+
+{{ message|default('Aucun message informationnel est donné.') }}
+</ul>

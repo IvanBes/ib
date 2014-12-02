@@ -1,0 +1,24 @@
+{% spaceless %}
+<div class="ib-conversation" style="margin-bottom: 20px;">
+	<div class="header">
+		<div class="pull-right" ><span id="loader_form" class="hide"><img src="{{ asset('img/loading.gif') }}" alt="loading" /></span></div>
+		<div id="title" class="mod-title"> Réagir à cet article</div>
+				
+			{% if form is defined %}
+		<div id="principale_formulaire">
+				{% include "IBCommentaireBundle:Discussion:formulaire_commentaire.html.twig" with {'form': form, 'id': discussion.id} only %}
+		</div>
+			{% else %}
+				<div style="background: #FFF; padding: 10px;">{% if discussion.isCommentable %}Vous devez vous <a href="{{ path('fos_user_security_login', {continue:path}) }}">connecter</a> pour poster un commentaire.{% else %}Cette discussion est clôturé.{% endif %}</div>
+			{% endif %}
+	</div>
+
+	<div class="nbcomment">
+		<span class="mod-title"><span class="int">{% if commentaires is not null %}{{commentaires.getTotalItemCount}}{% else %}0{% endif %}</span> Commentaire(s)</span>
+	</div>
+
+	<ul id="discussion" class="media-list" data-id="{{ discussion.id }}" data-last-date="{{ discussion.getLastUpdate|date('Y-m-d H:i:s') }}" {% if form is not defined %}style="margin-top:0px;"{% endif %}>
+		{% include 'IBCommentaireBundle:Discussion:commentaires.html.twig' with  {'commentaires': commentaires} only %}
+	</ul>
+</div>
+{% endspaceless %}

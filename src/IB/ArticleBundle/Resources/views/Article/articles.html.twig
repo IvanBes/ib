@@ -1,0 +1,12 @@
+{% import "IBArticleBundle:macro:functionViewer.html.twig" as functionViewer %}
+
+{% spaceless %}
+<h1>À LA UNE : {{ menu.name }}</h1>
+<hr>
+<div class="row">
+	<div class="col-md-12">
+		{{ functionViewer.renderView_articles(articles) }}
+		{{ knp_pagination_render(articles) }}	
+	</div>
+</div>
+{% endspaceless %}

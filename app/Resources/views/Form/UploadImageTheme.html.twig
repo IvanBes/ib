@@ -1,0 +1,12 @@
+{% block form_widget_simple %}
+{% spaceless %}
+    {% set type = type|default('text') %}
+    <input type="{{ type }}" {{ block('widget_attributes') }} {% if type == 'file' %} style="display:none" {% endif %}{% if value is not empty %}value="{{ value }}" {% endif %}/>
+    {% if type == 'file' %}
+    <div class="input-append">
+	    <input id="photoCover" class="input-large" type="text" disabled>
+	    <a class="btn" onclick="$('input[type=file]').click();">Browse</a>
+	</div>
+    {% endif %}
+{% endspaceless %}
+{% endblock form_widget_simple %}

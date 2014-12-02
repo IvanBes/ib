@@ -1,0 +1,13 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    {% spaceless %}
+    {% if object.parent.children|default(null) is not null %}
+        {% if object.parent.children[0].id != object.id %}
+            <a href="{{ path('ib_page_tree_up', {'page_id': object.id}) }}">
+                <span class="icon-chevron-up"></span>
+            </a>
+        {% endif %}
+    {% endif %}
+    {% endspaceless %}
+{% endblock %}

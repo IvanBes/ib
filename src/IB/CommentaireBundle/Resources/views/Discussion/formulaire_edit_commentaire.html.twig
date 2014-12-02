@@ -1,0 +1,23 @@
+{% spaceless %}
+<div id="formulaire" role-edit="true"> 
+    <form id="ib_commentaire_commentaire_edit_form" action="" method="POST">
+        <input type="hidden" name="_method" value="PUT" />
+        
+        {{ form_errors(form) }}
+        {{ form_label(form.commentaire) }}
+
+        <div class="ib_commentaire_form_errors">
+            {{ form_errors(form.commentaire) }}
+        </div>
+                   
+        {{ form_widget(form.commentaire) }}
+
+        {{ form_rest(form) }}
+
+        <div class="ib_commentaire_edit_submit">
+            <input type="submit" class="btn btn-default" value="Modifier" />
+        </div>
+
+    </form>
+</div>
+{% endspaceless %}

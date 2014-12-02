@@ -1,0 +1,11 @@
+{% extends ":Layout:layout.html.twig" %}
+{% block title %} {{ parent() }} - Plugin {% endblock %}
+
+{% block actionController %} 
+	
+<div class="well" >
+	{% block IBPlugin_Body %}
+	{% endblock	%}
+</div>
+
+{% endblock	%}

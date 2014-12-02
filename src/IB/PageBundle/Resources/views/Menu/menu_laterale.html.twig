@@ -1,0 +1,15 @@
+{% if menu_laterale is not empty %}
+<div id="navigation" class="ib_navigation ib_page nav-selected-partiel" data-split="{{ menu_laterale[0].lvl + 2 }}">
+	{% for menu in menu_laterale %}
+
+		{% if menu.contenus is empty and menu.modules is not empty %}
+		    {% set module =	menu.modules|first %}
+			<a class="ajaxLink" href="{{path('ib_page_get_repertoire', {'url':menu.url, 'module':module.name})}}">{{ menu.name }}</a>
+		{% else %}
+			{% set url_laterale = menu.redirection is not null ? menu.redirection.url : menu.url %}
+	    	<a class="ajaxLink" href="{{path('ib_page_get_repertoire', {'url':url_laterale})}}">{{ menu.name }}</a>
+	    {% endif %}
+	
+	{% endfor %}
+</div>
+{% endif %}

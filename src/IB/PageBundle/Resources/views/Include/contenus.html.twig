@@ -1,0 +1,11 @@
+{% import "IBPageBundle:Macro:functionViewer.html.twig" as functionViewer %}
+
+{% spaceless %}
+	{% if module_html is defined %}
+		{{ module_html|raw }}
+	{% elseif menu.contenus is not empty %}
+		{{ functionViewer.renderView_contenus(menu.contenus) }}
+	{% elseif menu.menuHasGaleries is not empty %}
+		{{ functionViewer.renderView_menuHasGaleries(menu.menuHasGaleries) }}
+	{% endif %}
+{% endspaceless %}

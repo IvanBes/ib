@@ -1,0 +1,97 @@
+hr {
+	border-color: #B9B9B9;
+}
+
+#navigation {
+background-color: #fff;
+width: 100%;
+padding: 12px;
+overflow: hidden;
+height: 45px;
+padding-left: 220px;
+text-align: center;
+border-bottom: 1px solid #cecece;
+}
+
+#navigation a {
+color: #3c173d;
+text-decoration: none;
+border-color:#000; 
+}
+
+.ib_navigation a {
+font-size: 12px;
+letter-spacing: 0.19em;
+border-right: 1px solid #fff;
+color: black;
+padding: 0px 12px 0px 12px;
+}
+
+.ib_navigation a:last-child {
+border: none;
+}
+
+#navigation a:hover {
+color: #000;
+}
+
+#navigation a.active {
+	color: #3b5998 !important;
+}
+
+.ib_navigation a.active {
+font-weight: bold;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {border-bottom-color:#ddd;}
+
+#ribbon #app_loader
+{
+	padding: 11px 0px 11px 0 !important;
+}
+
+#plan {
+margin: 20px 100px;
+padding: 0px;
+font-size: small;
+}
+
+#plan ul {
+list-style: none;
+border-top: solid #7a053a 1px;
+padding-left: 20px;
+}
+
+#plan li {
+margin-bottom: 1px;
+padding-left: 0px;
+font-weight: bold;
+}
+
+#plan li li {
+list-style: none;
+list-style: none;
+background: url(/IMG/image/puce_plan.gif) 5px 5px no-repeat;
+font-weight: normal;
+background-color: #fbecf3;
+padding-left: 20px;
+margin-top: 2px;
+}
+
+#plan li li li {
+list-style: none;
+background: transparent;
+padding: 0;
+margin-left: 10px;
+font-weight: normal;
+background-color: #ede2e6;
+}
+
+#plan li li li li {
+list-style: none;
+background: transparent;
+padding: 0;
+margin-left: 10px;
+font-weight: normal;
+background-color: #F5EFF3;
+}

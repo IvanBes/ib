@@ -1,0 +1,13 @@
+IBArticle_articles:
+  pattern: /
+  defaults: { _controller: IBArticleBundle:Article:Articles}
+
+IBArticle_list:
+  pattern: /list
+  defaults: { _controller: IBArticleBundle:Article:List}
+
+IBArticle_article:
+  pattern: /view/{slug}
+  defaults: { _controller: IBArticleBundle:Article:Article, slug:''}
+  requirements:
+    slug: "[a-zA-Z0-9\-]+"

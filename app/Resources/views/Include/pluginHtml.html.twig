@@ -1,0 +1,54 @@
+<div class="modal" id="oups" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Oups !</h4>
+      </div>
+      <div class="modal-body">
+        Le lien auquel vous vouliez accéder est temporairement fermé.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="mentions" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Mentions légales</h4>
+      </div>
+      <div class="modal-body">
+        <strong>{{ title_website }}</strong> n'héberge aucune vidéo sur ses serveurs, nous ne faisons qu'un référencement de liens vidéo hébergés par des sites publics.<br>
+        Les vidéos que vous pouvez retrouver ici ne sont pas postées par nos administrateurs sur ces sites.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" style="border-radius:0px;">
+      <div class="modal-header" style="padding:5px;">
+          <button type="button" class="close" style="margin-right:5px;" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <ul id="myTab" class="nav nav-pills" >
+            <li class="active"><a href="#connect" data-toggle="tab" >Login</a></li>
+            <li><a href="#register" data-toggle="tab">Inscription</a></li>
+          </ul>
+      </div>
+      <div class="modal-body" style="overflow:hidden">
+        <div id="myTabContent" class="tab-content">
+          <div class="tab-pane fade active in" id="connect">{{ render(controller('IBUserBundle:Security:login', { 'justContent': true })) }}</div>
+          <div class="tab-pane fade" id="register">{{ render(controller('IBUserBundle:Registration:register', { 'justContent': true })) }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

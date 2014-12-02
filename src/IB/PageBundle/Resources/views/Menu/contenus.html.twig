@@ -1,0 +1,17 @@
+{% extends "IBPageBundle::layout.html.twig" %}
+{% import "IBPageBundle:Macro:functionViewer.html.twig" as functionViewer %}
+
+{% block menu_transversale %}
+	{{ parent() }}
+    {{ menu_transversale|raw }}
+{% endblock %}
+
+{% block IBPage_Body %}
+	{% if module_html is defined %}
+		{{ module_html|raw }}
+	{% elseif menu.contenus is not empty %}
+		{{ functionViewer.renderView_contenus(menu.contenus) }}
+	{% elseif menu.menuHasGaleries is not empty %}
+		{{ functionViewer.renderView_menuHasGaleries(menu.menuHasGaleries) }}
+	{% endif %}
+{% endblock %}

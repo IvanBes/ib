@@ -1,0 +1,13 @@
+navigation:
+   type:     rest
+   resource: IB\PageBundle\Controller\NavigationController
+   name_prefix: ib_page_
+   prefix: navigation
+
+ib_page_tree_up:
+    pattern: /admin/ib/menu/page_tree_up/{page_id}
+    defaults:  { _controller: IBPageBundle:PageTreeSort:up }
+
+ib_page_tree_down:
+    pattern: /admin/ib/menu/page_tree_down/{page_id}
+    defaults:  { _controller: IBPageBundle:PageTreeSort:down }

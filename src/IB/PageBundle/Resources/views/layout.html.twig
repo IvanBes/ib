@@ -1,0 +1,15 @@
+{% extends ":Layout:layout.html.twig" %}
+
+{% block body_principal %}
+
+	{% block IBPage_Body %}
+	{% endblock %}
+
+{% endblock body_principal %}
+
+{% block js_bottom %}
+{{ parent() }}
+        {% javascripts '@IBPageBundle/Resources/assets/js/ib_page.js' %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+{% endblock %}

@@ -1,0 +1,4 @@
+likes:
+   type:     rest
+   resource: IB\LikeBundle\Controller\LikeController
+   name_prefix: api_ib_like_

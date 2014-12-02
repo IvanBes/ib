@@ -1,0 +1,7 @@
+{% macro calcul(nombreVote, totalVote) %}
+	{% if totalVote > 0 and totalVote >= nombreVote %}
+    	{{ myFloor(nombreVote/totalVote*100) }}%
+    {% else %}
+        Erreur !
+    {% endif %}
+{% endmacro %}

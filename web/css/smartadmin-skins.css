@@ -1,0 +1,400 @@
+/********************************************************************* STYLE 2 *************************************************************/
+html {
+	background: #3b5998;
+}
+
+.smart-style-2.non-transvervale #hide-menu,
+.smart-style-2.non-transvervale #left-panel
+{
+	display: none;
+}
+
+.smart-style-2 .profile-message {
+	background: #F5F5F5!important;
+}
+
+.smart-style-2.non-transvervale #main {
+	border: none;
+	margin-left: 0px;
+}
+
+.smart-style-2.hidden-menu #left-panel:hover {
+	border-right: 1px solid #CECECE;
+	width: 220px;
+}
+
+.smart-style-2 #content > .tab-content > .tab-pane > p:first-child,
+.smart-style-2 #content > .tab-content > .tab-pane > div:first-child,
+.smart-style-2 #content > .tab-content > .tab-pane > ul:first-child,
+.smart-style-2 #content > .tab-content > .tab-pane > h1:first-child,
+.smart-style-2 #content > .tab-content > .tab-pane > table:first-child
+{
+	margin-top:20px;	
+}
+
+.smart-style-2 #shortcut {
+	background-color: rgba(255, 255, 255, 0.9);
+}
+
+.smart-style-2 #shortcut ul {
+	-webkit-box-shadow: 0 4px 10px rgba(0,0,0,.3);
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+	border-bottom: 1px solid #A8BADB;
+}
+
+body.smart-style-2 {
+	background:#fff;
+}
+
+.smart-style-2 #header, .smart-style-2 .page-footer, .smart-style-2 .superbox-show {
+	background-image:none;
+	background-color: white;
+}
+.smart-style-2 .superbox-list.active:before {
+	color: #2C3742;
+}
+
+.smart-style-2 .superbox-img-description  {
+	color:#9EA8B1 !important;
+}
+
+.smart-style-2 #project-context>:first-child {
+	text-shadow:none;
+}
+.smart-style-2 #project-selector {
+	color: #B2C1D5;
+}
+.smart-style-2 #project-selector:hover {
+	color: #fff;
+}
+
+.smart-style-2 #logo-group span#activity {
+	background:none !important;
+	border:none !important;
+	color:#C5C6CA;
+}
+.smart-style-2 #logo-group span#activity:hover {
+	color:#fff;
+}
+
+.smart-style-2 .header-search>input[type="text"] {
+	background: #161B22;
+	border: 1px solid #0F1217;
+	color:#fff;
+	border-radius:4px;
+}
+
+.smart-style-2 .btn-header>:first-child>a {
+	background:none;
+	border:none !important;
+	color: black;
+	box-shadow:none !important;
+}
+.smart-style-2 .btn-header>:first-child>a:hover {
+	color:#929292;
+	cursor:pointer !important;
+}
+
+.smart-style-2 .header-search>button, 
+.smart-style-2 .header-dropdown-list a.dropdown-toggle {
+	color: #C5C6CA;
+}
+
+.smart-style-2 #ribbon {
+	background:#f6f6f6;
+}
+
+.smart-style-2 .btn.btn-ribbon {
+	background: #9498A0;
+}
+
+.smart-style-2 #ribbon .breadcrumb li:last-child, 
+.smart-style-2 #ribbon .breadcrumb>.active, 
+.smart-style-2 #ribbon .breadcrumb, 
+.smart-style-2 #ribbon .breadcrumb a {
+	color: #7C7C7C !important;
+}
+
+.smart-style-2 aside {
+	background: #fff;
+}
+
+.smart-style-2 #left-panel {
+	padding:0px;
+}
+
+.smart-style-2 #logo-group>span .badge {
+	background: #008DC4;
+}
+
+.smart-style-2 .login-info span, 
+.smart-style-2 .login-info {
+	border: 0 !important; 
+	box-shadow:none !important;
+}
+
+.smart-style-2 .login-info span {
+	padding: 5px 10px 7px;
+	background: #FFF;
+	border-radius: 4px;
+}
+
+.smart-style-2 .login-info a span {
+	padding:0;
+	font-size: 16px !important;
+	max-width: 105px;
+}
+
+.smart-style-2 .login-info { 
+	margin-bottom:7px !important;	
+	height:auto;
+}
+
+.smart-style-2 .login-info a {
+	font-size: 16px !important;
+	color: #33455A;
+	margin-top: 2px;
+}
+
+.smart-style-2 .login-info img {
+	width:35px;
+}
+
+.smart-style-2 nav ul li a {
+	color: black !important;
+}
+
+.smart-style-2 nav > ul > li > a {
+	padding-top:12px;
+	padding-bottom:12px;
+}
+
+.smart-style-2 nav ul ul>li:hover b {
+	color: #69737A !important;
+}
+
+.smart-style-2 nav>ul>li>a>i {
+	font-size:25px !important;
+}
+
+.smart-style-2 nav > ul > li > a b {
+	top:14px;
+}
+
+.smart-style-2 nav ul ul {
+}
+
+.smart-style-2 nav ul li.open>a, 
+.smart-style-2 nav ul li.open>a b, 
+.smart-style-2 nav ul .active>a {
+	color: #3b5998 !important;
+	font-weight: bold;
+}
+
+.smart-style-2 nav ul ul li>a:hover, 
+.smart-style-2 nav ul li a:hover {
+	background:none !important;
+}
+
+.smart-style-2 nav ul ul li>a {
+}
+
+.smart-style-2 nav > ul > li > ul::before, 
+.smart-style-2 nav > ul ul li::before {
+}
+
+.smart-style-2 nav ul ul ul li a {
+	padding-left:30px;
+}
+
+.smart-style-2 nav ul ul ul ul li a {
+	padding-left:40px;
+}
+
+.smart-style-2 nav ul ul ul ul ul li a {
+	padding-left:50px;
+}
+
+.smart-style-2 nav ul ul ul ul ul ul li a {
+	padding-left:60px;
+}
+
+.smart-style-2 .jarviswidget-color-blueDark>header {
+	background: #2C3742 !important;
+	border-color: #2C3742!important;
+}
+
+.smart-style-2 .btn-primary, .smart-style-2 .smart-form .button{
+	background-color: #3b9ff3;
+	border-color: #3292E2;
+}
+
+.smart-style-2 .btn-primary:hover, 
+.smart-style-2 .btn-primary:focus, 
+.smart-style-2 .btn-primary:active, 
+.smart-style-2 .btn-primary.active, 
+.smart-style-2 .open .dropdown-toggle.btn-primary {
+	background-color: #3E90D4;
+	border-color: #2F7DBE;
+}
+
+.smart-style-2 .dropdown-menu>li>a:hover, 
+.smart-style-2 .dropdown-menu>li>a:focus {
+	background-color: #3E90D4;
+}
+
+.smart-style-2 .btn-success {
+	background-color: #96bf48;
+	border-color: #84A83E;
+}
+
+.smart-style-2 .btn-success:hover, 
+.smart-style-2 .btn-success:focus, 
+.smart-style-2 .btn-success:active, 
+.smart-style-2 .btn-success.active, 
+.smart-style-2 .open .dropdown-toggle.btn-success {
+	background-color: #89AD45;
+	border-color: #78973B;
+}
+
+.smart-style-2 .btn-danger {
+	background-color: #DB4A67;
+	border-color: #CA4862;
+}
+
+.smart-style-2 .btn-danger:hover, 
+.smart-style-2 .btn-danger:focus, 
+.smart-style-2 .btn-danger:active, 
+.smart-style-2 .btn-danger.active, 
+.smart-style-2 .open .dropdown-toggle.btn-danger {
+	background-color: #CF4762;
+	border-color: #C0455E;
+}
+
+
+.smart-style-2 .btn-warning {
+	background-color: #E2B14A;
+	border-color: #C99D42;
+}
+
+.smart-style-2 .btn-warning:hover, 
+.smart-style-2 .btn-warning:focus, 
+.smart-style-2 .btn-warning:active, 
+.smart-style-2 .btn-warning.active, 
+.smart-style-2 .open .dropdown-toggle.btn-warning {
+	background-color: #D6A848;
+	border-color: #C09844;
+}
+
+.smart-style-2 .pagination>.active>a, 
+.smart-style-2 .pagination>.active>span, 
+.smart-style-2 .pagination>.active>a:hover, 
+.smart-style-2 .pagination>.active>span:hover, 
+.smart-style-2 .pagination>.active>a:focus, 
+.smart-style-2 .pagination>.active>span:focus {
+	background-color: #3b9ff3;
+}
+
+/*
+ * MINIFIED
+ */
+.smart-style-2.minified .login-info a {
+	margin-top: 4px;
+}
+
+.smart-style-2.minified #left-panel {
+	padding:0 !important;
+}
+
+.smart-style-2.minified nav ul>li>a {
+padding: 12px 11px;
+}
+
+.smart-style-2.minified nav>ul>li>ul, .smart-style-2.minified nav>ul>li>ul>li, .smart-style-2.minified nav>ul>li>ul>li>ul>li {
+	background:#fff !important;
+}
+
+.smart-style-2.minified nav>ul>li {
+	border-bottom: 1px solid #E6E6E6;
+	border-top: 1px solid #FFFFFF;
+}
+
+
+.smart-style-2.minified nav>ul>li>a>i {
+	font-size:18px !important;
+}
+
+.smart-style-2.minified .login-info span {
+	padding:0;
+}
+
+.smart-style-2.minified .login-info {
+	margin:0 !important;
+}
+
+
+.smart-style-2.minified nav ul li.active>a:before {
+	height: 23px;
+	right: -19px;
+	top: 7px;
+	font-size: 20px;
+	color: #FFFFFF;
+}
+
+/*
+ * COLOR PALLET
+ */
+.smart-style-2 .bg-color-red {
+	background: #DB4A67 !important;
+}
+
+.smart-style-2 .bg-color-blue {
+	background: #4387bf !important;
+}
+
+.smart-style-2 .smart-form .checkbox input:checked+i, 
+.smart-style-2 .smart-form .radio input:checked+i, 
+.smart-style-2 .smart-form .toggle input:checked+i {
+	border-color: #3b9ff3;
+}
+
+.smart-style-2 .smart-form .toggle i:before {
+background-color: #3b9ff3;
+}
+
+.smart-form .rating input+label:hover, 
+.smart-form .rating input+label:hover~label {
+	color: #3b9ff3;
+}
+
+.smart-style-2 .bg-color-greenLight {
+	background-color: #89AD45 !important;
+}
+
+.smart-style-2 .bg-color-orange {
+	background-color: #D6A848 !important;
+}
+
+.smart-style-2 .bg-color-teal {
+	background-color: #5ba0a3 !important;
+}
+
+.smart-style-2 .minifyme {
+	background: #D7DAE2;
+	border-bottom: 1px solid #818181;
+	color: #7E7E7E;
+	margin-top:15px; 
+}
+
+.smart-style-2  .minifyme:hover {
+	color: #4E4E4E;
+}
+
+.smart-style-2 .onoffswitch-inner:before {
+	background: #3b9ff3;
+	border-color: #3b9ff3 #257DC7 #2A7DC4;
+}
+
+.smart-style-2 .onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-switch:before {
+	color: #84A83E;
+}

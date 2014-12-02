@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="ib_document.per_page">5</parameter>
+        <parameter key="ib_document.limit_list">3</parameter>
+    </parameters>
+
+    <services>
+        <service id="DocumentBundle.admin.document" class="IB\DocumentBundle\Admin\DocumentAdmin">
+          <tag name="sonata.admin" show_in_dashboard="true" manager_type="orm" group="Documents" label="Document"/>
+          <argument />
+          <argument>IB\DocumentBundle\Entity\Document</argument>
+          <argument>SonataAdminBundle:CRUD</argument>
+        </service>
+
+        <service id="DocumentBundle.admin.menuhasgalerie" class="IB\DocumentBundle\Admin\DocumentHasGalerieAdmin">
+          <tag name="sonata.admin" show_in_dashboard="false" manager_type="orm" group="Documents" label="DocumentHasGalerie"/>
+          <argument />
+          <argument>IB\DocumentBundle\Entity\DocumentHasGalerie</argument>
+          <argument>SonataAdminBundle:CRUD</argument>
+        </service>
+    </services>
+
+</container>

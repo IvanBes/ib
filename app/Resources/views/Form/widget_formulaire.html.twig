@@ -1,0 +1,30 @@
+{% form_theme form theme|default(':Form:bootstrap.html.twig') %}
+
+{% if no_html is not defined %}
+<form method="post" role="form" {{ form_enctype(form)  }}
+	{% if idForm is defined %}
+		id="{{ idForm }}"
+	{% endif %}
+	{% if classForm is defined %}
+		class="{{ classForm }}"
+	{% endif %}
+	{% if actionForm is defined %}
+		action="{{ actionForm }}"
+	{% endif %}
+	{% if javascriptClick is defined %}
+		{{ javascriptClick[0] }}="{{ javascriptClick[1] }}"
+	{% endif %}>
+{% endif %}	 
+	 {{ form_widget(form) }}
+
+{% if no_html is not defined %}
+	{{ InputHr is defined ? '<hr>' }}
+
+	<div class="btn-group">
+   		<input type="submit" class="btn btn-default"{% if formNovalid is defined %} formnovalidate="true" {% endif %} {% if valueSubmit is defined %} value="{{ valueSubmit|capitalize }}" {% endif %} />
+		{% if groupInput is defined %}
+		<a  class="btn btn-info" href="{{ groupInput[0] }}">{{ groupInput[1]|capitalize }}</a>
+		{% endif %}
+	</div>
+</form>
+{% endif %}

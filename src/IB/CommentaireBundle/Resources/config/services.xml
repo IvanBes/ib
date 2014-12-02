@@ -1,0 +1,84 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="ib_commentaire.configuration.entities" />
+
+        <parameter key="ib_commentaire.limit_list">3</parameter>
+
+        <parameter key="ib_commentaire.model.discussion.class">IB\CommentaireBundle\Entity\Discussion</parameter>
+        <parameter key="ib_commentaire.model.commentaire.class">IB\CommentaireBundle\Entity\Commentaire</parameter>
+
+        <parameter key="ib_commentaire.manager.discussion.class">IB\CommentaireBundle\Entity\DiscussionManager</parameter>
+        <parameter key="ib_commentaire.manager.commentaire.class">IB\CommentaireBundle\Entity\CommentaireManager</parameter>
+
+        <parameter key="ib_commentaire.listener.commentaire_blamer.class">IB\CommentaireBundle\EventListener\CommentaireBlamerListener</parameter>
+        <parameter key="ib_commentaire.listener.closed_discussions.class">IB\CommentaireBundle\EventListener\DiscussionFermerListener</parameter>
+        <parameter key="ib_commentaire.listener.discussion_upDate.class">IB\CommentaireBundle\EventListener\DiscussionUpDateListener</parameter>
+    </parameters>
+
+    <services>
+
+        <!-- Form services -->
+
+        <service id="ib_commentaire.form_type.commentaire" class="IB\CommentaireBundle\Form\CommentaireType">
+            <argument>%ib_commentaire.model.commentaire.class%</argument>
+            <tag name="form.type" alias="ib_commentaire_commentaire" />
+        </service>
+
+        <service id="ib_commentaire.form_factory.commentaire" class="IB\CommentaireBundle\FormFactory\CommentaireFormFactory">
+            <argument type="service" id="form.factory" />
+            <argument>ib_commentaire_commentaire</argument>
+            <argument>ib_commentaire_commentaire</argument>
+        </service>
+
+        <!-- EntityManager service -->
+
+        <service id="ib_commentaire.entity_manager" factory-service="doctrine" factory-method="getManager" class="Doctrine\ORM\EntityManager" public="false">
+            <argument>default</argument>
+        </service>
+
+        <!-- Manager services -->
+        <service id="ib_commentaire.manager.discussion" class="%ib_commentaire.manager.discussion.class%">
+            <argument type="service" id="event_dispatcher" />
+            <argument>%ib_commentaire.configuration.entities%</argument>
+            <argument type="service" id="ib_commentaire.entity_manager" />
+            <argument>%ib_commentaire.model.discussion.class%</argument>
+        </service>
+
+        <service id="ib_commentaire.manager.commentaire" class="%ib_commentaire.manager.commentaire.class%">
+            <argument type="service" id="event_dispatcher" />
+            <argument type="service" id="ib_commentaire.entity_manager" />
+            <argument>%ib_commentaire.model.commentaire.class%</argument>
+        </service>
+
+        <!-- Events services -->
+        <service id="ib_commentaire.listener.commentaire_blamer" class="%ib_commentaire.listener.commentaire_blamer.class%">
+            <argument type="service" id="security.context" on-invalid="null" />
+            <argument type="service" id="logger" on-invalid="null" />
+            <tag name="kernel.event_subscriber" />
+        </service>
+
+        <service id="ib_commentaire.listener.closed_discussions" class="%ib_commentaire.listener.closed_discussions.class%">
+            <tag name="kernel.event_subscriber" />
+        </service>
+
+        <service id="ib_commentaire.listener.discussion_upDate" class="%ib_commentaire.listener.discussion_upDate.class%">
+            <argument type="service" id="ib_commentaire.manager.commentaire" />
+            <tag name="kernel.event_subscriber" />
+        </service>
+
+        <!-- ADMIN services -->
+
+        <service id="CommentaireBundle.admin.discussion" class="IB\CommentaireBundle\Admin\DiscussionAdmin">
+          <tag name="sonata.admin" manager_type="orm" group="Discussions" label="Discussion"/>
+          <argument />
+          <argument>IB\CommentaireBundle\Entity\Discussion</argument>
+          <argument>SonataAdminBundle:CRUD</argument>
+        </service>
+    </services>
+
+</container>

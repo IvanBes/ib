@@ -1,0 +1,8 @@
+discussions:
+   type:     rest
+   resource: IB\CommentaireBundle\Controller\DiscussionController
+   name_prefix: api_ib_commentaire_
+
+api_ib_commentaire_data_list:
+  pattern: /commentaire/list
+  defaults: { _controller: IBCommentaireBundle:DiscussionData:List}

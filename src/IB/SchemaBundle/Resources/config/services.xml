@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <!-- twig extensions -->
+        <service id="twig.extension.intl" class="Twig_Extensions_Extension_Intl">
+          <tag name="twig.extension" />
+        </service>
+
+        <!-- Schema Listener -->
+    	<service id="SchemaBundle.JsonAjax.action_listener" class="IB\SchemaBundle\EventListener\JsonAjaxListener">
+    	  <tag name="kernel.event_listener" event="kernel.controller" method="onKernelController" />
+    	</service>
+	
+        <service id="SchemaBundle.JsonAjaxOnly.action_listener" class="IB\SchemaBundle\EventListener\JsonAjaxOnlyListener">
+          <tag name="kernel.event_listener" event="kernel.controller" method="onKernelController" />
+        </service>      
+
+        <service id="SchemaBundle.DoPreAction.action_listener" class="IB\SchemaBundle\EventListener\DoPreActionListener">
+          <tag name="kernel.event_listener" event="kernel.controller" method="onKernelController" />
+        </service>
+    </services>
+</container>

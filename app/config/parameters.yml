@@ -1,0 +1,14 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: localhost
+    database_port: 8889
+    database_name: Flash
+    database_user: root
+    database_password: 'QLK!B?D.oh.ihdq!jp.oeiue?3?4'
+    mailer_transport: gmail
+    mailer_host: localhost
+    mailer_user: planetib.webmaster@gmail.com
+    mailer_password: koko32145
+    locale: fr
+    secret: 34790875398bidojsdpfojsfsqez09809

@@ -1,0 +1,20 @@
+{% set foo %}{% spaceless %}put_iblikebundle_{{driver}}_OFsa780Wtnl{% endspaceless %}{% endset %}
+<span class="ib_like">
+	<strong>
+	<div class="text-info">
+		<form class="ib_like_put_like" action="" method="POST" data-like-driver="{{ driver }}">
+		    <input type="hidden" name="_method" value="PUT" />
+		   	<input type="hidden" name="ib_like_id" value="{{ id }}" />
+		    <input type="hidden" name="_token" value="{{ csrf_token(foo) }}" />
+		  	<button type="submit" class="btn btn-app">
+              	<span class="badge bg-red rating">{{ rating }}</span>
+              	<i class="fa fa-heart-o"></i> Likes                                        
+            </button>
+            <div class="data-rate btn btn-app hidden">
+              	<span class="badge bg-red rating">{{ rating }}</span>
+              	<i class="fa fa-heart-o"></i> Likes   
+            </div>
+		</form>
+	</div>
+	</strong>
+</span>
